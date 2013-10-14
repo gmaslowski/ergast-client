@@ -7,6 +7,8 @@ public class ErgastUrlBuilder {
     public static final String DEFAULT_ERGAST_URL = "http://ergast.com/api/f1";
     private static final String SLASH = "/";
     private static final String DRIVERS = "drivers";
+    private static final String DOT = ".";
+    private static final String JSON = "json";
 
     private String ergastUrl;
 
@@ -38,7 +40,7 @@ public class ErgastUrlBuilder {
     }
 
     public String url() {
-        return ergastUrl;
+        return on(DOT).join(ergastUrl, JSON);
     }
 
 }

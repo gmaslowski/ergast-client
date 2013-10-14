@@ -1,10 +1,8 @@
 package com.gmaslowski.ergast;
 
-import com.google.common.base.Objects;
-
 import static com.google.common.base.Objects.toStringHelper;
 
-public class EGMRData {
+public class EGMRData<T> {
 
     private String xmlns;
     private String series;
@@ -13,8 +11,7 @@ public class EGMRData {
     private String offset;
     private String total;
 
-    private ResponseTable responseTable;
-
+    private ResponseTable<T> responseTable;
 
     @Override
     public String toString() {

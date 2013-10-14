@@ -9,20 +9,20 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static com.gmaslowski.ergast.url.ErgastUrlBuilder.DEFAULT_ERGAST_URL;
+import static com.gmaslowski.ergast.url.ErgastUrlBuilder.createUrl;
 
 public class Ergast {
 
     public EGResponse getDriver(String driverId) throws IOException {
 
-        URL url = new URL(DEFAULT_ERGAST_URL + "/drivers/alonso.json");
+        URL url = new URL(createUrl().drivers("alonso").url());
         HttpURLConnection uc = (HttpURLConnection) url.openConnection();
         uc.setRequestMethod("GET");
         InputStream inputStream = uc.getInputStream();
         Gson gson = new Gson();
 
         JsonReader reader = new JsonReader(new InputStreamReader(inputStream));
-        EGResponse o  = gson.fromJson(reader, EGResponse.class);
+        EGResponse o = gson.fromJson(reader, EGResponse.class);
         reader.close();
 
         return o;

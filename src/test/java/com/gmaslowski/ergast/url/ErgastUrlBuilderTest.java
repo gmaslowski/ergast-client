@@ -8,7 +8,7 @@ import static org.fest.assertions.Assertions.assertThat;
 public class ErgastUrlBuilderTest {
 
     @Test
-    public void shouldTest() {
+    public void shouldCreateDriverInYearUrl() {
 
         // when
         String url = createUrl().year(2013).drivers("alonso").url();

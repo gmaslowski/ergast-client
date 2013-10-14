@@ -1,5 +1,10 @@
 package com.gmaslowski.ergast;
 
+import com.google.common.base.Objects;
+
+import static com.google.common.base.Objects.equal;
+import static com.google.common.base.Objects.toStringHelper;
+
 class EGDriver {
 
     private String driverId;
@@ -9,42 +14,25 @@ class EGDriver {
     private String dateOfBirth;
     private String nationality;
 
-    public String getDriverId() {
-        return driverId;
-    }
-
-    public String getDriverUrl() {
-        return driverUrl;
-    }
-
-    public String getGivenName() {
-        return givenName;
-    }
-
-    public String getFamilyName() {
-        return familyName;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hashCode(driverId);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (!(obj instanceof EGDriver)) {
+            return false;
+        }
+        return equal(driverId, ((EGDriver) obj).driverId);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return toStringHelper(this)
+                .add("driverId", driverId)
+                .add("givenName", givenName)
+                .add("familyName", familyName)
+                .toString();
     }
 }
