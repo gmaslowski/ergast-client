@@ -9,9 +9,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Ergast {
+import static com.gmaslowski.ergast.url.ErgastUrlBuilder.DEFAULT_ERGAST_URL;
 
-    private static final String DEFAULT_ERGAST_URL = "http://ergast.com/api/f1";
+public class Ergast {
 
     public EGResponse getDriver(String driverId) throws IOException {
 
