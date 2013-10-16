@@ -1,5 +1,6 @@
 package com.gmaslowski.ergast;
 
+import com.gmaslowski.ergast.url.ErgastUrlBuilder;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
@@ -9,13 +10,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static com.gmaslowski.ergast.url.ErgastUrlBuilder.createUrl;
-
 public class Ergast {
 
     public EGResponse getDriver(String driverId) throws IOException {
 
-        URL url = new URL(createUrl().drivers("alonso").url());
+        URL url = new URL(ErgastUrlBuilder.ergastUrl().drivers("alonso").url());
         HttpURLConnection uc = (HttpURLConnection) url.openConnection();
         uc.setRequestMethod("GET");
         InputStream inputStream = uc.getInputStream();

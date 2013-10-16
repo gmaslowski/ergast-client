@@ -1,46 +1,34 @@
 package com.gmaslowski.ergast.url;
 
-import static com.google.common.base.Joiner.on;
+import static com.gmaslowski.ergast.url.DriversUrlBuilder.driversBuilder;
+import static com.google.common.collect.Lists.newArrayList;
 
-public class ErgastUrlBuilder {
+public class ErgastUrlBuilder extends AbstractErgastUrlBuilder {
 
     public static final String DEFAULT_ERGAST_URL = "http://ergast.com/api/f1";
-    private static final String SLASH = "/";
-    private static final String DRIVERS = "drivers";
-    private static final String DOT = ".";
-    private static final String JSON = "json";
-
-    private String ergastUrl;
 
     private ErgastUrlBuilder(String ergastUrl) {
-        this.ergastUrl = ergastUrl;
+        ergastUrlParts = newArrayList();
+        ergastUrlParts.add(ergastUrl);
     }
 
-    public static ErgastUrlBuilder createUrl() {
+    public static ErgastUrlBuilder ergastUrl() {
         return new ErgastUrlBuilder(DEFAULT_ERGAST_URL);
     }
 
-    public static ErgastUrlBuilder createUrl(String ergastUrl) {
+    public static ErgastUrlBuilder ergastUrl(String ergastUrl) {
         return new ErgastUrlBuilder(ergastUrl);
     }
 
-    public ErgastUrlBuilder year(Integer year) {
-        ergastUrl = on(SLASH).join(ergastUrl, year);
-        return this;
+    public YearUrlBuilder year(Integer year) {
+        return YearUrlBuilder.yearBuilder(ergastUrlParts).year(year);
     }
 
-    public ErgastUrlBuilder drivers() {
-        ergastUrl = on(SLASH).join(ergastUrl, DRIVERS);
-        return this;
+    public DriversUrlBuilder drivers() {
+        return driversBuilder(ergastUrlParts).drivers();
     }
 
-    public ErgastUrlBuilder drivers(String driverId) {
-        ergastUrl = on(SLASH).join(ergastUrl, DRIVERS, driverId);
-        return this;
+    public DriversUrlBuilder drivers(String driverId) {
+        return driversBuilder(ergastUrlParts).drivers(driverId);
     }
-
-    public String url() {
-        return on(DOT).join(ergastUrl, JSON);
-    }
-
 }

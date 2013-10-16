@@ -13,6 +13,7 @@ class EGDriver {
     private String familyName;
     private String dateOfBirth;
     private String nationality;
+    private String code;
 
     @Override
     public int hashCode() {
