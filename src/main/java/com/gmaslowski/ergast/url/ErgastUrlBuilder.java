@@ -1,6 +1,7 @@
 package com.gmaslowski.ergast.url;
 
 import static com.gmaslowski.ergast.url.DriversUrlBuilder.driversBuilder;
+import static com.gmaslowski.ergast.url.SeasonsUrlBuilder.seasonsBuilder;
 import static com.google.common.collect.Lists.newArrayList;
 
 public class ErgastUrlBuilder extends AbstractErgastUrlBuilder {
@@ -30,5 +31,9 @@ public class ErgastUrlBuilder extends AbstractErgastUrlBuilder {
 
     public DriversUrlBuilder drivers(String driverId) {
         return driversBuilder(ergastUrlParts).drivers(driverId);
+    }
+
+    public SeasonsUrlBuilder seasons() {
+        return seasonsBuilder(ergastUrlParts).seasons();
     }
 }
