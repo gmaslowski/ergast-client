@@ -3,6 +3,7 @@ package com.gmaslowski.ergast.url;
 import java.util.List;
 
 import static com.gmaslowski.ergast.url.DriversUrlBuilder.driversBuilder;
+import static com.gmaslowski.ergast.url.SeasonsUrlBuilder.seasonsBuilder;
 import static com.google.common.base.Preconditions.checkArgument;
 
 public class YearUrlBuilder extends AbstractErgastUrlBuilder {
@@ -21,9 +22,8 @@ public class YearUrlBuilder extends AbstractErgastUrlBuilder {
         return this;
     }
 
-    public YearUrlBuilder month(Integer month) {
-        checkArgument(month > 1 && month <= 12);
-        ergastUrlParts.add(month.toString());
+    public YearUrlBuilder round(Integer round) {
+        ergastUrlParts.add(round.toString());
         return this;
     }
 
@@ -33,6 +33,10 @@ public class YearUrlBuilder extends AbstractErgastUrlBuilder {
 
     public DriversUrlBuilder drivers(String driverId) {
         return driversBuilder(ergastUrlParts).drivers(driverId);
+    }
+
+    public SeasonsUrlBuilder seasons() {
+        return seasonsBuilder(ergastUrlParts).seasons();
     }
 
 }

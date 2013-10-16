@@ -35,9 +35,9 @@ public class DriversUrlBuilderTest {
     }
 
     @Test
-    public void shouldCreateDriverInYearAndMonthUrl() {
+    public void shouldCreateDriverInYearAndRoundUrl() {
         // when
-        String url = ergastUrl().year(2013).month(2).drivers("alonso").url();
+        String url = ergastUrl().year(2013).round(2).drivers("alonso").url();
 
         // then
         assertThat(url).isEqualTo("http://ergast.com/api/f1/2013/2/drivers/alonso.json");

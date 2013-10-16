@@ -2,6 +2,8 @@ package com.gmaslowski.ergast.url;
 
 import java.util.List;
 
+import static com.gmaslowski.ergast.url.SeasonsUrlBuilder.seasonsBuilder;
+
 public class DriversUrlBuilder extends AbstractErgastUrlBuilder {
 
     private static final String DRIVERS = "drivers";
@@ -24,4 +26,9 @@ public class DriversUrlBuilder extends AbstractErgastUrlBuilder {
         ergastUrlParts.add(driverId);
         return this;
     }
+
+    public SeasonsUrlBuilder seasons() {
+        return seasonsBuilder(ergastUrlParts).seasons();
+    }
+
 }
