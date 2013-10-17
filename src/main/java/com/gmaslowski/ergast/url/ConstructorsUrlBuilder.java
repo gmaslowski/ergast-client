@@ -1,28 +1,31 @@
 package com.gmaslowski.ergast.url;
 
-import java.util.List;
-
-public class ConstructorsUrlBuilder extends AbstractErgastUrlBuilder {
+public class ConstructorsUrlBuilder extends AbstractErgastUrlBuilder<ConstructorsUrlBuilder> {
 
     private static final String CONSTRUCTORS = "constructors";
 
-    private ConstructorsUrlBuilder(List<String> ergastUrlParts) {
-        this.ergastUrlParts = ergastUrlParts;
+    private ConstructorsUrlBuilder(ErgastUrl ergastUrl) {
+        this.ergastUrl = ergastUrl;
     }
 
-    public static ConstructorsUrlBuilder constructorsBuilder(List<String> ergastUrlParts) {
-        return new ConstructorsUrlBuilder(ergastUrlParts);
+    public static ConstructorsUrlBuilder constructorsBuilder(ErgastUrl ergastUrl) {
+        return new ConstructorsUrlBuilder(ergastUrl);
     }
 
 
     ConstructorsUrlBuilder constructors() {
-        ergastUrlParts.add(CONSTRUCTORS);
+        ergastUrl.addUrlPart(CONSTRUCTORS);
         return this;
     }
 
     ConstructorsUrlBuilder constructors(String constructorId) {
-        ergastUrlParts.add(CONSTRUCTORS);
-        ergastUrlParts.add(constructorId);
+        ergastUrl.addUrlPart(CONSTRUCTORS);
+        ergastUrl.addUrlPart(constructorId);
+        return this;
+    }
+
+    @Override
+    protected ConstructorsUrlBuilder getConcreteBuilder() {
         return this;
     }
 }
