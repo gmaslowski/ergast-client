@@ -13,6 +13,8 @@
         <!-- JUnit -->
         <junit.version>4.11</junit.version>
         <org.easytesting.fest-assert.version>1.4</org.easytesting.fest-assert.version>
+        <org.mockito-all.version>1.9.0</org.mockito-all.version>
+        <pl.kikko-utils.version>0.2.1-RC</pl.kikko-utils.version>
 
         <!-- Google -->
         <com.google.code.gson.version>2.2.4</com.google.code.gson.version>
@@ -46,8 +48,32 @@
             <version>${org.easytesting.fest-assert.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+            <version>${org.mockito-all.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.kikko.utils</groupId>
+            <artifactId>kikko-test</artifactId>
+            <scope>test</scope>
+            <version>${pl.kikko-utils.version}</version>
+        </dependency>
+
     </dependencies>
 
 
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-gregmaslowski</id>
+            <name>bintray</name>
+            <url>http://dl.bintray.com/gregmaslowski/maven</url>
+        </repository>
+    </repositories>
 
 </project>

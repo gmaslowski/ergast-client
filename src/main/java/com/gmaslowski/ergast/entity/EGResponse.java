@@ -1,13 +1,13 @@
-package com.gmaslowski.ergast;
+package com.gmaslowski.ergast.entity;
 
 import com.google.gson.annotations.SerializedName;
 
 import static com.google.common.base.Objects.toStringHelper;
 
-public class EGResponse<T> {
+public class EGResponse {
 
     @SerializedName("MRData")
-    private EGMRData<T> mrdata;
+    private EGMRData mrdata;
 
     @Override
     public String toString() {

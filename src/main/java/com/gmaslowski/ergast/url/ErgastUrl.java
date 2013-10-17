@@ -1,7 +1,11 @@
 package com.gmaslowski.ergast.url;
 
+import com.gmaslowski.ergast.url.exception.ErgastUrlException;
+import com.gmaslowski.ergast.payload.url.modifier.PayloadTypeUrlModifier;
 import com.google.common.annotations.VisibleForTesting;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import static com.google.common.base.Joiner.on;
@@ -9,6 +13,8 @@ import static com.google.common.base.Objects.toStringHelper;
 import static com.google.common.collect.Lists.newArrayList;
 
 public class ErgastUrl {
+
+    private static final String SLASH = "/";
 
     @VisibleForTesting
     static final Integer DEFAULT_LIMIT = 30;
@@ -32,10 +38,20 @@ public class ErgastUrl {
         this.offset = offset.toString();
     }
 
-    public String url() {
+    @VisibleForTesting
+    String urlString() {
         String url = on("/").join(parts);
-
         return offsetAndLimit(url);
+    }
+
+    public URL url(PayloadTypeUrlModifier payloadTypeUrlModifier) {
+        String url = on(SLASH).join(parts);
+        url = offsetAndLimit(url);
+        try {
+            return new URL(payloadTypeUrlModifier.modify(url));
+        } catch (MalformedURLException mURLe) {
+            throw new ErgastUrlException(mURLe);
+        }
     }
 
     private String offsetAndLimit(String url) {

@@ -4,8 +4,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 public class ErgastUrlBuilder {
 
-    public static final String DEFAULT_ERGAST_URL = "http://ergast.com/api/f1";
-
+    private static final String DEFAULT_ERGAST_URL = "http://ergast.com/api/f1";
     private static final String SEASONS = "seasons";
     private static final String DRIVERS = "drivers";
     private static final String CONSTRUCTORS = "constructors";
@@ -73,7 +72,7 @@ public class ErgastUrlBuilder {
         return this;
     }
 
-    public String url() {
-        return ergastUrl.url().concat(".json");
+    public ErgastUrl build() {
+        return ergastUrl;
     }
 }

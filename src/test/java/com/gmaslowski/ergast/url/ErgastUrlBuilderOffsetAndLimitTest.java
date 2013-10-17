@@ -1,18 +1,19 @@
 package com.gmaslowski.ergast.url;
 
 import org.junit.Test;
+import pl.kikko.test.unit.AbstractUnitTest;
 
 import static com.gmaslowski.ergast.url.ErgastUrl.DEFAULT_LIMIT;
 import static com.gmaslowski.ergast.url.ErgastUrl.DEFAULT_OFFSET;
 import static com.gmaslowski.ergast.url.ErgastUrlBuilder.ergastUrl;
 import static org.fest.assertions.Assertions.assertThat;
 
-public class ErgastUrlBuilderOffsetAndLimitTest {
+public class ErgastUrlBuilderOffsetAndLimitTest extends AbstractUnitTest {
 
     @Test
     public void shouldCreateUrlWithGivenOffsetAndLimitSet() {
         // when
-        String url = ergastUrl().offset(13).limit(7).url();
+        String url = ergastUrl().offset(13).limit(7).build().urlString();
 
         // then
         assertThat(url).contains("limit=7");
@@ -22,7 +23,7 @@ public class ErgastUrlBuilderOffsetAndLimitTest {
     @Test
     public void shouldCreateUrlWithGivenOffsetAndUseDefaultLimitValue() {
         // when
-        String url = ergastUrl().offset(13).url();
+        String url = ergastUrl().offset(13).build().urlString();
 
         // then
         assertThat(url).contains(String.format("limit=%s", DEFAULT_LIMIT));
@@ -32,7 +33,7 @@ public class ErgastUrlBuilderOffsetAndLimitTest {
     @Test
     public void shouldCreateUrlWithGivenLimitAndUseDefaultOffsetValue() {
         // when
-        String url = ergastUrl().limit(7).url();
+        String url = ergastUrl().limit(7).build().urlString();
 
         // then
         assertThat(url).contains(String.format("offset=%s", DEFAULT_OFFSET));
@@ -42,7 +43,7 @@ public class ErgastUrlBuilderOffsetAndLimitTest {
     @Test
     public void shouldCreateUrlWithoutLimitAndOffsetWhenNotSet() {
         // when
-        String url = ergastUrl().url();
+        String url = ergastUrl().build().urlString();
 
         // then
         assertThat(url).doesNotContain("limit=");
