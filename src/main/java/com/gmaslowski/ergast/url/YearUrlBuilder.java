@@ -2,6 +2,7 @@ package com.gmaslowski.ergast.url;
 
 import java.util.List;
 
+import static com.gmaslowski.ergast.url.ConstructorsUrlBuilder.constructorsBuilder;
 import static com.gmaslowski.ergast.url.DriversUrlBuilder.driversBuilder;
 import static com.gmaslowski.ergast.url.SeasonsUrlBuilder.seasonsBuilder;
 import static com.google.common.base.Preconditions.checkArgument;
@@ -33,6 +34,14 @@ public class YearUrlBuilder extends AbstractErgastUrlBuilder {
 
     public DriversUrlBuilder drivers(String driverId) {
         return driversBuilder(ergastUrlParts).drivers(driverId);
+    }
+
+    public ConstructorsUrlBuilder constructors() {
+        return constructorsBuilder(ergastUrlParts).constructors();
+    }
+
+    public ConstructorsUrlBuilder constructors(String constructorId) {
+        return constructorsBuilder(ergastUrlParts).constructors(constructorId);
     }
 
     public SeasonsUrlBuilder seasons() {
