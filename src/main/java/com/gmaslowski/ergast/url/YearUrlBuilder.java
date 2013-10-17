@@ -17,7 +17,7 @@ public class YearUrlBuilder extends AbstractErgastUrlBuilder {
     }
 
     public YearUrlBuilder year(Integer year) {
-        checkArgument(year >= 1950);
+        checkArgument(year >= 1950, String.format("[year=%s]. Sorry, but F1 started first in 1950 UK Silverstone.", year));
         ergastUrlParts.add(year.toString());
         return this;
     }

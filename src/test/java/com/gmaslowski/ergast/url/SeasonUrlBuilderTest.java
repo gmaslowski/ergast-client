@@ -15,4 +15,13 @@ public class SeasonUrlBuilderTest {
         // then
         assertThat(url).isEqualTo("http://ergast.com/api/f1/drivers/alonso/seasons.json");
     }
+
+    @Test
+    public void shouldCreateSeasonsUrl() {
+        // when
+        String url = ergastUrl().seasons().url();
+
+        // then
+        assertThat(url).isEqualTo("http://ergast.com/api/f1/seasons.json");
+    }
 }

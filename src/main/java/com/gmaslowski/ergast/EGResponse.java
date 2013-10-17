@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import static com.google.common.base.Objects.toStringHelper;
 
-public abstract class EGResponse<T> {
+public class EGResponse<T> {
 
     @SerializedName("MRData")
     private EGMRData<T> mrdata;

@@ -24,23 +24,4 @@ public class DriversUrlBuilderTest {
         // then
         assertThat(url).isEqualTo("http://ergast.com/api/f1/drivers.json");
     }
-
-    @Test
-    public void shouldCreateDriverInYearUrl() {
-        // when
-        String url = ergastUrl().year(2013).drivers("alonso").url();
-
-        // then
-        assertThat(url).isEqualTo("http://ergast.com/api/f1/2013/drivers/alonso.json");
-    }
-
-    @Test
-    public void shouldCreateDriverInYearAndRoundUrl() {
-        // when
-        String url = ergastUrl().year(2013).round(2).drivers("alonso").url();
-
-        // then
-        assertThat(url).isEqualTo("http://ergast.com/api/f1/2013/2/drivers/alonso.json");
-    }
-
 }
