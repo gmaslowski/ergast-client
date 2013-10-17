@@ -1,34 +1,36 @@
 package com.gmaslowski.ergast.url;
 
-import java.util.List;
-
 import static com.gmaslowski.ergast.url.SeasonsUrlBuilder.seasonsBuilder;
 
-public class DriversUrlBuilder extends AbstractErgastUrlBuilder {
+public class DriversUrlBuilder extends AbstractErgastUrlBuilder<DriversUrlBuilder> {
 
     private static final String DRIVERS = "drivers";
 
-    private DriversUrlBuilder(List<String> ergastUrlParts) {
-        this.ergastUrlParts = ergastUrlParts;
+    private DriversUrlBuilder(ErgastUrl ergastUrl) {
+        this.ergastUrl = ergastUrl;
     }
 
-    static DriversUrlBuilder driversBuilder(List<String> ergastUrlParts) {
-        return new DriversUrlBuilder(ergastUrlParts);
+    static DriversUrlBuilder driversBuilder(ErgastUrl ergastUrl) {
+        return new DriversUrlBuilder(ergastUrl);
     }
 
     public DriversUrlBuilder drivers() {
-        ergastUrlParts.add(DRIVERS);
+        ergastUrl.addUrlPart(DRIVERS);
         return this;
     }
 
     public DriversUrlBuilder drivers(String driverId) {
-        ergastUrlParts.add(DRIVERS);
-        ergastUrlParts.add(driverId);
+        ergastUrl.addUrlPart(DRIVERS);
+        ergastUrl.addUrlPart(driverId);
         return this;
     }
 
     public SeasonsUrlBuilder seasons() {
-        return seasonsBuilder(ergastUrlParts).seasons();
+        return seasonsBuilder(ergastUrl).seasons();
     }
 
+    @Override
+    protected DriversUrlBuilder getConcreteBuilder() {
+        return this;
+    }
 }
