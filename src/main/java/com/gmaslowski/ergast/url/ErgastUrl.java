@@ -41,20 +41,22 @@ public class ErgastUrl {
     @VisibleForTesting
     String urlString() {
         String url = on("/").join(parts);
-        return offsetAndLimit(url);
+        return appendOffsetAndLimit(url);
     }
 
     public URL url(PayloadTypeUrlModifier payloadTypeUrlModifier) {
-        String url = on(SLASH).join(parts);
-        url = offsetAndLimit(url);
+        String urlString = on(SLASH).join(parts);
+        urlString = payloadTypeUrlModifier.modify(urlString);
+        urlString = appendOffsetAndLimit(urlString);
+
         try {
-            return new URL(payloadTypeUrlModifier.modify(url));
+            return new URL(urlString);
         } catch (MalformedURLException mURLe) {
             throw new ErgastUrlException(mURLe);
         }
     }
 
-    private String offsetAndLimit(String url) {
+    private String appendOffsetAndLimit(String url) {
         if (limit != null || offset != null) {
             url = url.concat(String.format("?limit=%s&offset=%s", evaluateLimit(), evaluateOffset()));
         }

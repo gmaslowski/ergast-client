@@ -14,7 +14,7 @@ public class ErgastIntegrationTest {
     public void shouldRetrieveData() {
         // given
         ergast = Ergast.defaultInstance();
-        ErgastUrl ergastUrl = ergastUrl().drivers("alonso").build();
+        ErgastUrl ergastUrl = ergastUrl().drivers("alonso").limit(0).offset(0).build();
 
         // when
         EGResponse response = ergast.request(ergastUrl);
