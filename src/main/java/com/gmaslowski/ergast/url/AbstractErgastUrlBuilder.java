@@ -1,14 +1,24 @@
 package com.gmaslowski.ergast.url;
 
-import java.util.List;
+abstract class AbstractErgastUrlBuilder<BUILDER extends AbstractErgastUrlBuilder> {
 
-import static com.google.common.base.Joiner.on;
+    protected BUILDER concreteBuilder = getConcreteBuilder();
+    protected ErgastUrl ergastUrl;
 
-class AbstractErgastUrlBuilder {
+    public BUILDER limit(Integer limit) {
+        ergastUrl.limit(limit);
+        return concreteBuilder;
+    }
 
-    protected List<String> ergastUrlParts;
+    public BUILDER offset(Integer offset) {
+        ergastUrl.offset(offset);
+        return concreteBuilder;
+    }
 
     public String url() {
-        return on("/").join(ergastUrlParts).concat(".json");
+        return ergastUrl.url().concat(".json");
     }
+
+    protected abstract BUILDER getConcreteBuilder();
+
 }

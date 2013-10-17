@@ -1,21 +1,24 @@
 package com.gmaslowski.ergast.url;
 
-import java.util.List;
-
-public class SeasonsUrlBuilder extends AbstractErgastUrlBuilder {
+public class SeasonsUrlBuilder extends AbstractErgastUrlBuilder<SeasonsUrlBuilder> {
 
     public static final String SEASONS = "seasons";
 
-    private SeasonsUrlBuilder(List<String> ergastUrlParts) {
-        this.ergastUrlParts = ergastUrlParts;
+    private SeasonsUrlBuilder(ErgastUrl ergastUrl) {
+        this.ergastUrl = ergastUrl;
     }
 
-    static SeasonsUrlBuilder seasonsBuilder(List<String> ergastUrlParts) {
-        return new SeasonsUrlBuilder(ergastUrlParts);
+    static SeasonsUrlBuilder seasonsBuilder(ErgastUrl ergastUrl) {
+        return new SeasonsUrlBuilder(ergastUrl);
     }
 
     SeasonsUrlBuilder seasons() {
-        ergastUrlParts.add(SEASONS);
+        ergastUrl.addUrlPart(SEASONS);
+        return this;
+    }
+
+    @Override
+    protected SeasonsUrlBuilder getConcreteBuilder() {
         return this;
     }
 }
