@@ -1,10 +1,9 @@
 package com.gmaslowski.ergast.url;
 
-import com.gmaslowski.ergast.url.exception.ErgastUrlException;
 import com.gmaslowski.ergast.payload.url.modifier.PayloadTypeUrlModifier;
-import org.fest.assertions.Assertions;
+import com.gmaslowski.ergast.test.AbstractUnitTest;
+import com.gmaslowski.ergast.url.exception.ErgastUrlException;
 import org.junit.Test;
-import pl.kikko.test.unit.AbstractUnitTest;
 
 import java.net.URL;
 

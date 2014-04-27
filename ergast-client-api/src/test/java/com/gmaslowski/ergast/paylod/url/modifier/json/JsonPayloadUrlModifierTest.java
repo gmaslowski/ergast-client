@@ -1,8 +1,8 @@
 package com.gmaslowski.ergast.paylod.url.modifier.json;
 
 import com.gmaslowski.ergast.payload.url.modifier.json.JsonPayloadUrlModifier;
+import com.gmaslowski.ergast.test.AbstractUnitTest;
 import org.junit.Test;
-import pl.kikko.test.unit.AbstractUnitTest;
 
 import static org.fest.assertions.Assertions.assertThat;
 
