@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class BasicRequester implements PayloadRequester {
+public class BasicPayloadRequester implements PayloadRequester {
 
     @Override
     public InputStream request(URL url) {
