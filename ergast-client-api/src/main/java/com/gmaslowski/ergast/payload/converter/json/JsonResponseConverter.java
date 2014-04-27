@@ -1,6 +1,6 @@
 package com.gmaslowski.ergast.payload.converter.json;
 
-import com.gmaslowski.ergast.entity.EGResponse;
+import com.gmaslowski.ergast.entity.baredata.EGResponse;
 import com.gmaslowski.ergast.payload.converter.PayloadConverter;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;

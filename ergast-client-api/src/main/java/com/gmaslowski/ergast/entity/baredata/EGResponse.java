@@ -1,4 +1,4 @@
-package com.gmaslowski.ergast.entity;
+package com.gmaslowski.ergast.entity.baredata;
 
 import com.google.gson.annotations.SerializedName;
 

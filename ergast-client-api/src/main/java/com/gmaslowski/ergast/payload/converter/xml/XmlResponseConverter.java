@@ -1,6 +1,6 @@
 package com.gmaslowski.ergast.payload.converter.xml;
 
-import com.gmaslowski.ergast.entity.EGResponse;
+import com.gmaslowski.ergast.entity.baredata.EGResponse;
 import com.gmaslowski.ergast.payload.converter.PayloadConverter;
 
 import java.io.InputStream;

@@ -1,6 +1,6 @@
 package com.gmaslowski.ergast;
 
-import com.gmaslowski.ergast.entity.EGResponse;
+import com.gmaslowski.ergast.entity.baredata.EGResponse;
 import com.gmaslowski.ergast.payload.PayloadType;
 import com.gmaslowski.ergast.payload.converter.PayloadConverter;
 import com.gmaslowski.ergast.payload.converter.PayloadConverterFactory;
