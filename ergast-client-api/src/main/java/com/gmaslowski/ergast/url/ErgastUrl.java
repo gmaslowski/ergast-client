@@ -1,7 +1,7 @@
 package com.gmaslowski.ergast.url;
 
-import com.gmaslowski.ergast.url.exception.ErgastUrlException;
 import com.gmaslowski.ergast.payload.url.modifier.PayloadTypeUrlModifier;
+import com.gmaslowski.ergast.url.exception.ErgastUrlException;
 import com.google.common.annotations.VisibleForTesting;
 
 import java.net.MalformedURLException;

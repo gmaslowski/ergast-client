@@ -13,7 +13,7 @@ public class ErgastIntegrationTest {
     @Test
     public void shouldRetrieveData() {
         // given
-        ergast = Ergast.defaultInstance();
+        ergast = Ergast.ergast();
         ErgastUrl ergastUrl = ergastUrl().drivers("alonso").limit(0).offset(0).build();
 
         // when
