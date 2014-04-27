@@ -1,7 +1,7 @@
 package com.gmaslowski.ergast.url;
 
+import com.gmaslowski.ergast.test.AbstractUnitTest;
 import org.junit.Test;
-import pl.kikko.test.unit.AbstractUnitTest;
 
 import static com.gmaslowski.ergast.url.ErgastUrl.DEFAULT_LIMIT;
 import static com.gmaslowski.ergast.url.ErgastUrl.DEFAULT_OFFSET;

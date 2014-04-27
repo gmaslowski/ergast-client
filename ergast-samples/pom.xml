@@ -10,8 +10,20 @@
         <version>0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.gmaslowski</groupId>
+    <groupId>com.gmaslowski.ergast</groupId>
     <artifactId>ergast-samples</artifactId>
     <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.gmaslowski</groupId>
+            <artifactId>ergast-client-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

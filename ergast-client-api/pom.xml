@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.gmaslowski</groupId>
-    <artifactId>ergast-client</artifactId>
+    <artifactId>ergast-client-api</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -34,19 +34,11 @@
         <dependency>
             <groupId>org.easytesting</groupId>
             <artifactId>fest-assert</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>pl.kikko.utils</groupId>
-            <artifactId>kikko-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>

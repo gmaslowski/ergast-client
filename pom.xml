@@ -10,12 +10,14 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>ergast-client</module>
+        <module>ergast-client-api</module>
         <module>ergast-samples</module>
     </modules>
 
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
         <!-- JUnit -->
         <junit.version>4.11</junit.version>
         <org.easytesting.fest-assert.version>1.4</org.easytesting.fest-assert.version>
@@ -31,21 +33,29 @@
         <dependencies>
 
             <dependency>
+                <groupId>com.gmaslowski</groupId>
+                <artifactId>ergast-client-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>${com.google.code.gson.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${com.google.guava.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${com.google.guava.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <dependency>
@@ -60,13 +70,6 @@
                 <artifactId>mockito-all</artifactId>
                 <scope>test</scope>
                 <version>${org.mockito-all.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>pl.kikko.utils</groupId>
-                <artifactId>kikko-test</artifactId>
-                <scope>test</scope>
-                <version>${pl.kikko-utils.version}</version>
             </dependency>
 
         </dependencies>

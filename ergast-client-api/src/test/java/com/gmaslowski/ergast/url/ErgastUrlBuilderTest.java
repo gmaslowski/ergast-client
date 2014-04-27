@@ -1,10 +1,11 @@
 package com.gmaslowski.ergast.url;
 
+import com.gmaslowski.ergast.test.AbstractUnitTest;
 import org.junit.Test;
-import pl.kikko.test.unit.AbstractUnitTest;
 
 import static com.gmaslowski.ergast.url.ErgastUrlBuilder.ergastUrl;
 import static org.fest.assertions.Assertions.assertThat;
+
 
 public class ErgastUrlBuilderTest extends AbstractUnitTest {
 
