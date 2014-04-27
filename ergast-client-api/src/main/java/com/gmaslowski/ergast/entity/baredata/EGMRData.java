@@ -1,4 +1,4 @@
-package com.gmaslowski.ergast.entity;
+package com.gmaslowski.ergast.entity.baredata;
 
 import static com.google.common.base.Objects.toStringHelper;
 
