@@ -1,7 +1,6 @@
 package com.gmaslowski.ergast.payload.request.basic;
 
 import com.gmaslowski.ergast.payload.request.PayloadRequester;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
