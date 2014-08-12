@@ -1,6 +1,6 @@
 package com.gmaslowski.ergast.url;
 
-import static com.gmaslowski.ergast.url.DriverUrlBuilder.driver;
+import static com.gmaslowski.ergast.url.builder.DriverUrlBuilder.driver;
 import static com.gmaslowski.ergast.url.testdata.CircuitTestData.MONZA;
 import static com.gmaslowski.ergast.url.testdata.ConstructorTestData.MCLAREN;
 import static com.gmaslowski.ergast.url.testdata.DriverTestData.ALONSO;
@@ -42,7 +42,7 @@ public class DriverUrlBuilderTest extends AbstractUnitTest {
     @Test
     public void shouldCreateDriverUrlForGivenDriverInGivenYear() {
         // when
-        path = driver(ALONSO).drivingInYear(2004).path();
+        path = driver(ALONSO).inYear(2004).path();
 
         // then
         assertThat(path).isEqualTo("/2004/drivers/alonso");
@@ -51,7 +51,7 @@ public class DriverUrlBuilderTest extends AbstractUnitTest {
     @Test
     public void shouldCreateDriverUrlForGivenDriverDrivingForGivenConstructor() {
         // when
-        path = driver().drivingForConstructor(MCLAREN).path();
+        path = driver().byConstructor(MCLAREN).path();
 
         // then
         assertThat(path).isEqualTo("/constructors/mclaren/drivers");
@@ -60,7 +60,7 @@ public class DriverUrlBuilderTest extends AbstractUnitTest {
     @Test
     public void shouldCreateDriverUrlForGivenCircuitId() {
         // when
-        path = driver().drivingOnCircuit(MONZA).path();
+        path = driver().onCircuit(MONZA).path();
 
         // then
         assertThat(path).isEqualTo("/circuits/monza/drivers");
@@ -69,7 +69,7 @@ public class DriverUrlBuilderTest extends AbstractUnitTest {
     @Test
     public void shouldCreateDriverUrlForGivenGridPosition() {
         // when
-        path = driver().drivingOnGrid(4).path();
+        path = driver().onGrid(4).path();
 
         // then
         assertThat(path).isEqualTo("/grid/4/drivers");
@@ -78,7 +78,7 @@ public class DriverUrlBuilderTest extends AbstractUnitTest {
     @Test
     public void shouldCreateDriverUrlForGivenResultPosition() {
         // when
-        path = driver().finishedOnPosition(4).path();
+        path = driver().onPosition(4).path();
 
         // then
         assertThat(path).isEqualTo("/results/4/drivers");
@@ -105,7 +105,7 @@ public class DriverUrlBuilderTest extends AbstractUnitTest {
     @Test
     public void shouldCreateDriverCombo() {
         // when
-        path = driver(ALONSO).currentYear().drivingOnCircuit(MONZA).drivingOnGrid(1).withFastest(7).path();
+        path = driver(ALONSO).currentYear().onCircuit(MONZA).onGrid(1).withFastest(7).path();
 
         // then
         assertThat(path).isEqualTo("/current/circuits/monza/grid/1/fastest/7/drivers/alonso");
