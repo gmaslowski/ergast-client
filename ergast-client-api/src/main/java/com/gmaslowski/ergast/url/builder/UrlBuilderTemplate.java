@@ -1,5 +1,8 @@
 package com.gmaslowski.ergast.url.builder;
 
+import static com.google.common.collect.Maps.newHashMap;
+import java.util.Map;
+
 public abstract class UrlBuilderTemplate {
 
     protected static final String SLASH = "/";
@@ -11,95 +14,71 @@ public abstract class UrlBuilderTemplate {
     protected static final String RESULT_PATH = "results";
     protected static final String STATUS_PATH = "status";
     protected static final String FASTEST_RANK_PATH = "fastest";
-    protected static final String CURRENT_YEAR = "current";
+    protected static final String YEAR = "current";
 
-    // all specific
-    private boolean currentYear = false;
-    private int year;
-    private int fastestRank;
-    private int gridPosition;
-    private int finishingPosition;
-    private String constructor;
-    private String circuitId;
-    private String statusId;
+    private Map<String, String> urlParts = newHashMap();
 
     public UrlBuilderTemplate currentYear() {
-        this.currentYear = true;
+        urlParts.put(YEAR, YEAR);
         return this;
     }
 
     public UrlBuilderTemplate inYear(int year) {
-        this.year = year;
+        urlParts.put(YEAR, String.valueOf(year));
         return this;
     }
 
+
     public UrlBuilderTemplate onCircuit(String circuitId) {
-        this.circuitId = circuitId;
+        urlParts.put(CIRCUITS_PATH, circuitId);
+        return this;
+    }
+
+    public UrlBuilderTemplate byDriver(String driver) {
+        urlParts.put(DRIVER_PATH, driver);
         return this;
     }
 
     public UrlBuilderTemplate byConstructor(String constructor) {
-        this.constructor = constructor;
+        urlParts.put(CONSTRUCTORS_PATH, constructor);
         return this;
     }
 
     public UrlBuilderTemplate onGrid(int gridPosition) {
-        this.gridPosition = gridPosition;
+        urlParts.put(GRID_PATH, String.valueOf(gridPosition));
         return this;
     }
 
     public UrlBuilderTemplate onPosition(int finishingPosition) {
-        this.finishingPosition = finishingPosition;
+        urlParts.put(RESULT_PATH, String.valueOf(finishingPosition));
         return this;
     }
 
     public UrlBuilderTemplate withStatus(String someStatus) {
-        this.statusId = someStatus;
+        urlParts.put(STATUS_PATH, someStatus);
         return this;
     }
 
     public UrlBuilderTemplate withFastest(int fastestRank) {
-        this.fastestRank = fastestRank;
+        urlParts.put(FASTEST_RANK_PATH, String.valueOf(fastestRank));
         return this;
     }
 
     public String path() {
         StringBuilder builder = new StringBuilder();
 
-        if (year != 0) {
-            builder.append(SLASH + year);
-        } else if (currentYear) {
-            builder.append(SLASH + CURRENT_YEAR);
+        if (urlParts.containsKey(YEAR)) {
+            builder.append(SLASH + urlParts.get(YEAR));
         }
 
-        if (constructor != null) {
-            builder.append(SLASH + CONSTRUCTORS_PATH + SLASH + constructor);
-        }
+        urlParts.entrySet().stream()
+                .filter(urlPart -> !YEAR.equals(urlPart.getKey()))
+                .forEach(urlPart -> builder.append(SLASH + urlPart.getKey() + SLASH + urlPart.getValue()));
 
-        if (circuitId != null) {
-            builder.append(SLASH + CIRCUITS_PATH + SLASH + circuitId);
-        }
-
-        if (gridPosition != 0) {
-            builder.append(SLASH + GRID_PATH + SLASH + gridPosition);
-        }
-
-        if (finishingPosition != 0) {
-            builder.append(SLASH + RESULT_PATH + SLASH + finishingPosition);
-        }
-
-        if (statusId != null) {
-            builder.append(SLASH + STATUS_PATH + SLASH + statusId);
-        }
-
-        if (fastestRank != 0) {
-            builder.append(SLASH + FASTEST_RANK_PATH + SLASH + fastestRank);
-        }
-
-        builder.append(voila());
+        builder.append(buildUrlEnding());
 
         return builder.toString();
     }
 
-    public abstract String voila();
+    public abstract String buildUrlEnding();
 }

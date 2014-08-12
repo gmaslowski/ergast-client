@@ -22,7 +22,7 @@ public class DriverUrlBuilder extends UrlBuilderTemplate {
     }
 
     @Override
-    public String voila() {
+    public String buildUrlEnding() {
         if (name == null) {
             return SLASH + DRIVER_PATH;
         }
