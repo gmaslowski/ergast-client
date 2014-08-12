@@ -5,10 +5,10 @@ import static com.gmaslowski.ergast.payload.request.basic.BasicPayloadRequester.
 import com.gmaslowski.ergast.entity.baredata.EGResponse;
 import com.gmaslowski.ergast.payload.PayloadType;
 import com.gmaslowski.ergast.payload.converter.PayloadConverter;
-import com.gmaslowski.ergast.payload.converter.PayloadConverterFactory;
+import com.gmaslowski.ergast.payload.converter.PayloadTypeVisitorConverterFactory;
 import com.gmaslowski.ergast.payload.request.PayloadRequester;
 import com.gmaslowski.ergast.payload.url.modifier.PayloadTypeUrlModifier;
-import com.gmaslowski.ergast.payload.url.modifier.PayloadTypeUrlModifierFactory;
+import com.gmaslowski.ergast.payload.url.modifier.PayloadTypeVisitorUrlModifierFactory;
 import com.gmaslowski.ergast.url.ErgastUrl;
 import java.io.InputStream;
 import java.net.URL;
@@ -18,12 +18,18 @@ public class Ergast {
     private static final PayloadType DEFAULT_PAYLOAD_TYPE = JSON;
     private static final PayloadRequester DEFAULT_PAYLOAD_REQUESTER = basicPayloadRequester();
 
-    private final PayloadType payloadType;
     private final PayloadRequester payloadRequester;
+
+    private final PayloadType payloadType;
+    private final PayloadTypeVisitorUrlModifierFactory payloadTypeVisitorUrlModifierFactory;
+    private final PayloadTypeVisitorConverterFactory payloadTypeVisitorConverterFactory;
 
     private Ergast(PayloadType payloadType, PayloadRequester payloadRequester) {
         this.payloadType = payloadType;
         this.payloadRequester = payloadRequester;
+
+        this.payloadTypeVisitorUrlModifierFactory = new PayloadTypeVisitorUrlModifierFactory();
+        this.payloadTypeVisitorConverterFactory = new PayloadTypeVisitorConverterFactory();
     }
 
     public static final Ergast ergast() {
@@ -45,14 +51,14 @@ public class Ergast {
     public EGResponse request(ErgastUrl ergastUrl) {
 
         // url modifier
-        PayloadTypeUrlModifier urlModifier = payloadType.accept(new PayloadTypeUrlModifierFactory());
+        PayloadTypeUrlModifier urlModifier = payloadType.accept(payloadTypeVisitorUrlModifierFactory);
         URL url = ergastUrl.url(urlModifier);
 
         // requester
         InputStream inputStream = payloadRequester.request(url);
 
         // converter
-        PayloadConverter converter = payloadType.accept(new PayloadConverterFactory());
+        PayloadConverter converter = payloadType.accept(payloadTypeVisitorConverterFactory);
         return converter.convert(inputStream);
     }
 }

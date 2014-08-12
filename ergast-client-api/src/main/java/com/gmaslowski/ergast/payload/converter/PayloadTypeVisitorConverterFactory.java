@@ -4,7 +4,7 @@ import com.gmaslowski.ergast.payload.ValueReturningPayloadTypeVisitor;
 import com.gmaslowski.ergast.payload.converter.json.JsonResponseConverter;
 import com.gmaslowski.ergast.payload.converter.xml.XmlResponseConverter;
 
-public class PayloadConverterFactory implements ValueReturningPayloadTypeVisitor<PayloadConverter> {
+public class PayloadTypeVisitorConverterFactory implements ValueReturningPayloadTypeVisitor<PayloadConverter> {
 
     @Override
     public PayloadConverter visitJson() {
