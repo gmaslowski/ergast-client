@@ -8,7 +8,7 @@ public class ErgastUrlBuilder {
     private static final String SEASONS = "seasons";
     private static final String DRIVERS = "drivers";
     private static final String CONSTRUCTORS = "constructors";
-
+    
     private final ErgastUrl ergastUrl;
 
     private ErgastUrlBuilder(String ergastUrl) {

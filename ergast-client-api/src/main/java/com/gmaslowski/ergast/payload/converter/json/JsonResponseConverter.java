@@ -15,14 +15,13 @@ public class JsonResponseConverter implements PayloadConverter {
     public EGResponse convert(InputStream stream) {
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new InputStreamReader(stream));
-        EGResponse o = gson.fromJson(reader, EGResponse.class);
+        EGResponse egResponse = gson.fromJson(reader, EGResponse.class);
         try {
             reader.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        return o;
-
+        return egResponse;
     }
 }
