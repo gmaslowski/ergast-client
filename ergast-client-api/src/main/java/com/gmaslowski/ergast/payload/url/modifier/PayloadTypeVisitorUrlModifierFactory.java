@@ -4,7 +4,7 @@ import com.gmaslowski.ergast.payload.ValueReturningPayloadTypeVisitor;
 import com.gmaslowski.ergast.payload.url.modifier.json.JsonPayloadUrlModifier;
 import com.gmaslowski.ergast.payload.url.modifier.xml.XmlPayloadUrlModifier;
 
-public class PayloadTypeUrlModifierFactory implements ValueReturningPayloadTypeVisitor<PayloadTypeUrlModifier> {
+public class PayloadTypeVisitorUrlModifierFactory implements ValueReturningPayloadTypeVisitor<PayloadTypeUrlModifier> {
 
     @Override
     public PayloadTypeUrlModifier visitJson() {
