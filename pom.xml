@@ -9,6 +9,14 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <developers>
+        <developer>
+            <name>Greg Maslowski</name>
+            <email>gregmaslowski@gmail.com</email>
+            <organizationUrl>http://github.com/gmaslowski</organizationUrl>
+        </developer>
+    </developers>
+
     <modules>
         <module>ergast-client-api</module>
         <module>ergast-samples</module>
