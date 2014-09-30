@@ -10,6 +10,7 @@ public abstract class UrlBuilderTemplate {
 
     protected static final String DRIVER_PATH = "drivers";
     protected static final String DRIVER_STANDINGS_PATH = "driverStandings";
+    protected static final String CONSTRUCTOR_STANDINGS_PATH = "constructorStandings";
     protected static final String GRID_PATH = "grid";
     protected static final String CONSTRUCTORS_PATH = "constructors";
     protected static final String CIRCUITS_PATH = "circuits";
