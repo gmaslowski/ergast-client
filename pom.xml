@@ -35,7 +35,6 @@
         <junit.version>4.11</junit.version>
         <org.easytesting.fest-assert.version>1.4</org.easytesting.fest-assert.version>
         <org.mockito-all.version>1.9.0</org.mockito-all.version>
-        <pl.kikko-utils.version>0.2.1-RC</pl.kikko-utils.version>
 
         <!-- Maven Plugins -->
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
