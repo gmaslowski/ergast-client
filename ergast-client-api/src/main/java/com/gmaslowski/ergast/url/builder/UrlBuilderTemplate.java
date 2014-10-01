@@ -8,6 +8,7 @@ public abstract class UrlBuilderTemplate {
 
     protected static final String SLASH = "/";
 
+    protected static final String PITSTOP_PATH = "pitstops";
     protected static final String DRIVER_PATH = "drivers";
     protected static final String DRIVER_STANDINGS_PATH = "driverStandings";
     protected static final String CONSTRUCTOR_STANDINGS_PATH = "constructorStandings";
